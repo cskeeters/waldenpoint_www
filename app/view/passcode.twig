@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("form").submit();
+        }
+    </script>
+
+
+    <div class="section light">
+        <main>
+            <h1>Passcode</h1>
+            <p class="sub-heading">
+                You are attempting to access a page protected by a passcode!
+            </p>
+
+            <form id="form" action="/passcode" method="POST">
+                <input type="hidden" name="return" value="{{return}}">
+                <input type="password" name="passcode" value="" placeholder="Passcode">
+
+                <button class="g-recaptcha button rise"
+                        data-sitekey="6LfOBnUkAAAAAJAUiuE-FAfEKQkxj7gN1EjWd3wG"
+                        data-callback='onSubmit'
+                        data-action='submit'>Login</button>
+            </form>
+        </main>
+    </div>
+
+{% endblock %}

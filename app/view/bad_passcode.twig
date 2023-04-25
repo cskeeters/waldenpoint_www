@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="section light">
+        <main>
+            <h1>Insufficient Passcode</h1>
+
+            <p class="sub-heading">
+                The passocde you provided does not permit entry into that page.  If you have another passcode, please <a href="/passcode?return={{return}}">try again</a>.
+            </p>
+        </main>
+    </div>
+
+{% endblock %}

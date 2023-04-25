@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+        Walden Point HOA
+    </title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/color-palette-11.css">
+    <link rel="stylesheet" href="css/palette-apply.css">
+    <link rel="icon" href="img/favicon.ico">
+    <script src="https://kit.fontawesome.com/471ceb669a.js" crossorigin="anonymous"></script>
+
+    <!-- start content -->
+    {% block head %}{% endblock %}
+    <!-- end content -->
+</head>
+
+<body>
+
+    <div class="section dark header-container" >
+        <header>
+            <div class="title">
+                <h1><a href="/" tabindex="-1">Walden Point</a></h1>
+            </div>
+            <nav>
+                <a href="members" tabindex="-1">Members</a>
+                <a href="contact" tabindex="-1">Contact Us</a>
+            </nav>
+            <div class="title2">
+                <h2><a href="/" tabindex="-1">Homeowners association</a></h2>
+            </div>
+        </header>
+        <div class="rel">
+            <div class="bg">WP</div>
+        </div>
+    </div>
+
+<!-- start content -->
+{% block content %}{% endblock %}
+<!-- end content -->
+
+
+    <div class="section dark">
+        <footer>
+            &copy; All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

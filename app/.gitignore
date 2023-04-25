@@ -1,0 +1,5 @@
+vendor
+beans
+public/files
+*.yaml
+.env

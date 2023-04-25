@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="section light">
+        <main>
+            <h1>Contact Us</h1>
+
+            <div class="officers cards double">
+
+                {%~ for contact in contacts %}
+                    <div class="card">
+                        <div class="name">{{contact.first}} {{contact.last}}</div>
+                        <div class="position">{{contact.position}}</div>
+                        <a class="email" href="mailto:'{{contact.first}} {{contact.last}}' <{{contact.email}}>?subject=Walden Point">{{contact.email}}</a>
+                        <a class="tel" href="tel:{{contact.tel}}">{{contact.tel}}</a>
+                    </div>
+                {%~ endfor %}
+            </div>
+        </main>
+    </div>
+
+{% endblock %}

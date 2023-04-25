@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <style type="text/css">
+        #zelleQR {
+            text-align: center;
+        }
+        #zelleQR svg {
+            width: min(80vw, 400px);
+        }
+    </style>
+    <script src="js/qrcode.min.js"></script>
+    <script>
+    function window_onload() {
+        var qrcode = new QRCode({
+                msg   :  'https://www.zellepay.com/qr-codes/?data=eyJ0b2tlbiI6IndhbGRlbnBvaW50LmhvYUBnbWFpbC5jb20iLCJuYW1lIjoiV0FMREVOIFBPSU5UIEhPTUVPV05FUlMgQVNTT0NJQVRJT04sIn0='
+                ,dim   :   800
+                ,pad   :   4
+                ,mtx   :  -1
+                ,ecl   :  "M"
+                ,ecb   :   1
+                ,pal   : ["#8c7851", "#fffffe"]
+                ,vrb   :   0
+            });
+
+        // Remove Height and Width attributes so that the SVG can be responsive
+        qrcode.removeAttribute('width');
+        qrcode.removeAttribute('height');
+
+        console.log(qrcode);
+        const zelleQR = document.getElementById("zelleQR");
+
+        if (zelleQR) {
+            zelleQR.appendChild(qrcode);
+        } else {
+            console.log("Error finding zelle");
+        }
+    }
+    window.onload = window_onload;
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="section light">
+        <main>
+            <h1>Members</h1>
+
+            <p>
+                The current members are shown here by Lot number.  If you want to modify this contact information, please contact Chad.
+            </p>
+
+            <div class="members cards double">
+                {%~ for lot in lots %}
+                <div class="card">
+                    <h3 class="lot">Lot {{loop.index}}</h3>
+                    {%~ for name in lot %}
+                        <div class="name">{{name['first']}} {{name['last']}}</div>
+                        {%~ if name['email'] %}
+                            <a class="email" href="mailto:'{{name['first']}} {{name['last']}}' <{{name['email']}}>?subject=Walden Point">{{name['email']}}</a>
+                        {%~ endif %}
+                        {%~ if name['tel'] %}
+                            <a class="tel" href="tel:{{name['tel']}}">{{name['tel']}}</a>
+                        {%~ endif %}
+                    {%~ endfor %}
+                </div>
+                {%~ endfor %}
+            </div>
+        </main>
+    </div>
+
+    <div class="section white">
+        <main>
+            <h1>Payments</h1>
+            <p>
+                Payments can be made to the HOA via check and <a href="https://www.zellepay.com/">Zelle</a>.
+            </p>
+
+            <h2>Check</h2>
+            <p>
+                Checks should be made out to "Walden Point HOA" or "Walden Point Homeowners Assoc".  They can be handed to Chad Skeeters or mailed to:
+            </p>
+
+            <blockquote>
+                {{Treasurer.first}} {{Treasurer.last}}<br>
+                {{Treasurer.address}}<br>
+                {{Treasurer.city}}, {{Treasurer.state}} {{Treasurer.zip}}
+            </blockquote>
+
+            <h2>Zelle</h2>
+            <p>
+                Zelle is a method of transferring money online.  To use, your bank must support Zelle and you likely will need to use your bank's mobile app to make payments via Zelle.
+            </p>
+            <p>
+                Payments made via Zelle are free for the HOA and likely free for you too!  This saves paper and some will find it more convenient than writing a check.
+            </p>
+            <p>
+                To make a payment with Zelle, you need to find the right recipient.  You can either search for <a href="mailto:waldenpoint.hoa.gmail.com">waldenpoint.hoa@gmail.com</a>, or, if your app supports it, scan the QR code below.
+            </p>
+            <div id="zelleQR"></div>
+        </main>
+    </div>
+
+    <div class="section light">
+        <main>
+            <h1>General Ledger / Reports</h1>
+            <p>
+                The Treasurer maintains the financial status of the HOA using accrual, double-entry accounting.  The <a href="ledger">general ledger</a> is maintained using <a href="https://plaintextaccounting.org/">plain-text accounting</a>, namely <a href="https://beancount.github.io/docs/index.html">beancount</a>. When transactions are added to the general ledger, the following reports will be updated.
+                <ul>
+                    <li><a href="beans/view/year/2023/balsheet.html">Balance Sheet</a></li>
+                    <li><a href="beans/view/year/2023/income.html">Income Statement</a></li>
+                </ul>
+            </p>
+
+            <p>
+                When reviewing the reports, keep in mind that the <i>Equity</i> in the HOA will be negative, as our HOA is solvent (that'd good).  Also the <i>Income </i> shows negative, but this is just an artifact of the <a href="https://beancount.github.io/docs/the_double_entry_counting_method.html#accounting-equations">accounting equation</a> used:
+            </p>
+
+            <p>
+                Assets + Liabilities + Expenses + Income + Equity = 0
+            </p>
+
+            <ul>
+                <li>An <i>asset</i> will be <b>positive</b> when the asset is worth something</li>
+                <li>A <i>liability</i> will be <b>negative</b> when the HOA owes someone</li>
+                <li>An <i>expense</i> will be <b>positive</b> when a cost is incurred</li>
+                <li><i>Income</i> will be negative when someone owes the HOA money</li>
+                <li><i>Equity</i> will be negative when the HOA is solvent</li>
+            </ul>
+
+            <p>
+            </p>
+        </main>
+    </div>
+
+{% endblock %}

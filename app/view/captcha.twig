@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("form").submit();
+        }
+    </script>
+
+    <div class="section light">
+        <main>
+            <h1>Captcha</h1>
+
+            <p class="sub-heading">
+                To protect against bots scraping all of our contact information, please click the button below to prove that you are human.
+            </p>
+            <p>
+                <form id="form" action="/captcha" method="POST">
+                    <input type="hidden" name="return" value="{{return}}">
+                    <button class="g-recaptcha button highlight rise"
+                            data-sitekey="6LfOBnUkAAAAAJAUiuE-FAfEKQkxj7gN1EjWd3wG"
+                            data-callback='onSubmit'
+                            data-action='submit'>I am human!</button>
+                </form>
+            </p>
+        </main>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,328 @@
+html {
+    font-size: clamp(12px, 3vw, 22px);
+}
+
+body {
+    font-weight:400;
+    width: 100vw;
+    height: 100vh;
+    display:grid;
+    grid-template-rows: auto 1fr;
+
+    /* ensure that vertical scroll bar doesn't cause horizontal scrollbar */
+    max-width:100%;
+}
+
+input,
+select,
+textarea
+button
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+header, main, footer {
+    margin: 1rem auto;
+    width: min(1000px, 90vw);
+}
+
+header {
+    position:relative;
+    display: grid;
+    column-gap: 1em;
+}
+
+header * {
+    margin: 0;
+}
+
+
+/* position HAS to be relative in order for z-index to keep bg (WP) below the nav */
+header .title {
+    position:relative;
+    z-index: 1;
+}
+header .title2 {
+    grid-row: 2;
+}
+
+header h1 a,
+header h2 a {
+    font-weight: revert;
+}
+
+header h2 {
+    font-weight: 200;
+}
+
+/* position HAS to be relative in order for z-index to keep bg (WP) below the nav */
+nav {
+    display: inline-grid;
+    grid-template-columns: repeat(2, min-content);
+    position:relative;
+    z-index: 2;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+nav a {
+    font-size: max(13px, .7rem);
+    display:inline-block;
+    z-index: 2;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+
+.bg {
+    position: absolute;
+    top:-.25em;
+    right: 1rem;
+    font-family: var(--bg-text-family);
+    font-size: 13rem;
+    color: var(--faded-blue);
+    mix-blend-mode: multiply;
+    user-select: none;
+    z-index: 0;
+}
+
+label {
+    font-style:italic;
+}
+
+
+.indent {
+    margin-left: 2em;
+}
+
+.show {
+    border: 1px solid red;
+}
+.rel {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+main p a {
+    /* font-weight:700; */
+    text-decoration: underline;
+}
+
+.section main {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.section main h1 {
+    text-align: center;
+}
+
+.cards {
+    margin: 1em 0;
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+}
+
+.cards .button {
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+@media (min-width: 800px) {
+    header {
+        grid-template-areas: "a b";
+        grid-template-columns: 1fr auto;
+    }
+
+    header .title2 {
+        grid-column: 1 / 3;
+    }
+    nav {
+        margin-top: 0em;
+    }
+
+    .bg {
+        font-size: 11rem;
+    }
+    .double {
+        grid-template-areas: "a b";
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards .button {
+        font-size: 1em;
+    }
+
+    .members {
+        grid-template-areas:
+          'a m'
+          'b l'
+          'c k'
+          'd j'
+          'e i'
+          'f h'
+          'x g';
+    }
+
+    .members .card:nth-child(1) { grid-area: a }
+    .members .card:nth-child(2) { grid-area: b }
+    .members .card:nth-child(3) { grid-area: c }
+    .members .card:nth-child(4) { grid-area: d }
+    .members .card:nth-child(5) { grid-area: e }
+    .members .card:nth-child(6) { grid-area: f }
+    .members .card:nth-child(7) { grid-area: g }
+    .members .card:nth-child(8) { grid-area: h }
+    .members .card:nth-child(9) { grid-area: i }
+    .members .card:nth-child(10) { grid-area: j }
+    .members .card:nth-child(11) { grid-area: k }
+    .members .card:nth-child(12) { grid-area: l }
+    .members .card:nth-child(13) { grid-area: m }
+}
+
+.card {
+    border-radius: 6px;
+    padding: 1.3em 1.8em;
+    font-weight: inherit;
+}
+
+a.rise {
+  position: relative;
+  top: 0;
+  box-shadow: 0 6px 6px -6px black;
+  transition: all ease 0.3s;
+}
+
+a.rise:hover {
+  box-shadow: 0 10px 6px -6px black;
+  top: -4px;
+}
+
+i.space-right {
+    margin-right:.25em;
+}
+
+
+.card :is(h1, h2, h3) {
+    margin: 0px;
+    margin-bottom: 0.5em;
+}
+
+.buttons {
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+.button {
+    padding:.4em 1em;
+    border-radius: 5px;
+    /* This brings the padding and border into the parent's container */
+    display: inline-block;
+}
+
+footer {
+    font-size: min(.8em, 14px);
+}
+
+.card.doc h2:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f15c";
+    margin-right: .25em;
+}
+
+.card.ammend h2:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f15c";
+    margin-right: .25em;
+    font-weight: 200;
+}
+
+.card.map h2:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f279"; /* fa-map */
+    margin-right: .25em;
+}
+
+.pdf:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f1c1";
+    margin-right: .25em;
+}
+
+.html:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f121";
+    margin-right: .25em;
+}
+
+.officers .name {
+    font-family: var(--h-family);
+    font-size:2em;
+}
+
+.contact .name:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2bb";
+    margin-right: .25em;
+}
+
+.contact .name,
+.officer .name {
+    line-height: 1.5em;
+}
+.officer .name:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f2bd";
+    margin-right: .25em;
+}
+
+.officer.treasurer .name:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f3d1";
+    margin-right: .25em;
+}
+
+.members .lot:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\e1b0";
+    margin-right: .25em;
+}
+
+.officer.secretary .name:before {
+    content: "\00A7";
+    margin-right: .25em;
+}
+
+.email, .tel {
+    display: block;
+}
+
+.expand-second {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+#contact-container {
+    display: grid;
+    place-items: end;
+}
+a.button[href="contact"] {
+}
+
+img.zelle {
+    display:block;
+    margin: 0 auto;
+    width: min(90%, 300px);
+}

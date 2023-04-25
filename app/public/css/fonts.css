@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+    --bg-text-family: "Times New Roman";
+
+    --main-family: Jost;
+    --main-style: none;
+    --main-weight: 400;
+    --main-transform: none;
+
+    --title-family: Vollkorn;
+    --title-weight: 900;
+    --title-letter-spacing: normal;
+
+    --sub-title-family: Jost;
+    --sub-title-weight: 200;
+    --sub-title-transform: uppercase;
+    --sub-title-letter-spacing: 4px;
+
+    --nav-a-family: Jost;
+    --nav-a-style: none;
+    --nav-a-weight: 400;
+    --nav-a-transform: uppercase;
+
+    --h-family: var(--title-family);
+    --sh-family: var(--sub-title-family);
+
+    --card-h-family: var(--h-family);
+    --card-s-family: var(--sh-family);
+}
+html {
+    font-family:    var(--main-family, sans-serif);
+    font-style:     var(--main-style, normal);
+    font-weight:    var(--main-weight, normal);
+    letter-spacing: var(--main-letter-spacing, normal);
+}
+
+header h1 {
+    font-family:    var(--title-family, var(--main-family));
+    font-style:     var(--title-style, var(--main-style));
+    font-weight:    var(--title-weight, var(--main-weight));
+    text-transform: var(--title-transform, var(--main-transform));
+    letter-spacing: var(--title-letter-spacing, normal);
+}
+
+header h2 {
+    font-family:    var(--sub-title-family, var(--main-family));
+    font-style:     var(--sub-title-style, var(--main-style));
+    font-weight:    var(--sub-title-weight, var(--main-weight));
+    text-transform: var(--sub-title-transform, var(--main-transform));
+    letter-spacing: var(--sub-title-letter-spacing, normal);
+}
+
+nav a {
+    font-family:    var(--nav-a-family, var(--main-family));
+    font-style:     var(--nav-a-style, var(--main-style));
+    font-weight:    var(--nav-a-weight, var(--main-weight));
+    text-transform: var(--nav-a-transform, var(--main-transform));
+}
+
+main {
+    font-family:    var(--p-family, var(--main-family));
+    font-style:     var(--p-style, var(--main-style));
+    font-weight:    var(--p-weight, var(--main-weight));
+    text-transform: var(--p-transform, var(--main-transform));
+}
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+    font-family:    var(--h-family, var(--main-family));
+    font-style:     var(--h-style, var(--main-style));
+    /* font-weight:    var(--h-weight, var(--main-weight)); */
+    text-transform: var(--h-transform, var(--main-transform));
+}
+
+main .sub-heading {
+    font-family:    var(--sh-family, var(--main-family));
+    font-style:     var(--sh-style, var(--main-style));
+    font-weight:    var(--sh-weight, var(--main-weight));
+    text-transform: var(--sh-transform, var(--main-transform));
+}
+
