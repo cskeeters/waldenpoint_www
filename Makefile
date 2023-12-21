@@ -25,6 +25,9 @@ debug:
 bash:
 	$(ENGINE) run -it --rm -v $(PWD)/app:/var/www/app -v $(PWD)/logs:/var/log/app --name $(APP_NAME) $(IMAGE) bash
 
+bashexec:
+	$(ENGINE) exec -it $(APP_NAME) bash
+
 stop:
 	$(ENGINE) container rm -f $(APP_NAME)
 
