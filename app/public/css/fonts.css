@@ -74,6 +74,7 @@ main h5,
 main h6 {
     font-family:    var(--h-family, var(--main-family));
     font-style:     var(--h-style, var(--main-style));
+    /* font-feature-settings: "ss11" 1; // Doesn't work from google fonts */
     /* font-weight:    var(--h-weight, var(--main-weight)); */
     text-transform: var(--h-transform, var(--main-transform));
 }
