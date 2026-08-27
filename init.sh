@@ -32,5 +32,5 @@ elif [[ $1 == "bash" ]]; then
 
 elif [[ $1 == "simple" ]]; then
     cd /var/www/app/public
-    php81 -S 0.0.0.0:80
+    php85 -S 0.0.0.0:80
 fi
