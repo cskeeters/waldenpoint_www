@@ -54,7 +54,6 @@ function reCAPTCHA(string $g_recaptcha_response) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $google_response = curl_exec($ch);
-    curl_close($ch);
     $json = json_decode($google_response, true);
 
     // verify the response
