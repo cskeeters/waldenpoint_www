@@ -283,5 +283,35 @@ $app->get('/doc/{name}', function (Request $request, Response $response, array $
     }
 });
 
+$app->get('/info', function (Request $request, Response $response, array $args) {
+    // Simple IP restriction example
+    $serverParams = $request->getServerParams();
+    /* $clientIp = $serverParams['REMOTE_ADDR'] ?? ''; */
+    /* $clientIp = $serverParams['X-Forwarded-For'] ?? 'NONE'; */
+
+    // Nginx Proxy Manager's Host is configured with just:
+    //   proxy_set_header X-Forwarded-For $remote_addr;
+    //
+    // When Nginx sends an HTTP header to PHP, it automatically prepends HTTP_
+    // and converts dashes to underscores. Therefore, the X-Forwarded-For
+    // header appears in $serverParams (which maps to PHP's $_SERVER)
+    // as:HTTP_X_FORWARDED_FOR
+
+    $clientIp = $serverParams['HTTP_X_FORWARDED_FOR'] ?? 'NONE';
+
+    if (!str_starts_with($clientIp, '192.168.1.')) {
+        /* $response->getBody()->write("Forbidden $clientIp"); */
+        $response->getBody()->write("Forbidden");
+        return $response->withStatus(403);
+    }
+
+    ob_start();
+    phpinfo();
+    $response->getBody()->write(ob_get_clean());
+
+    return $response;
+
+});
+
 $app->run();
 ?>
