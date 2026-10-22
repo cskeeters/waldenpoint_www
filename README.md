@@ -21,8 +21,8 @@ This website can be deployed on a linux computer with docker by running the foll
     make
     cd ..
 
-    git clone git@github.com:cskeeters/walden_point_hoa.git
-    cd walden_point_hoa
+    git clone git@github.com:cskeeters/waldenpoint_www.git
+    cd waldenpoint_www
     make build
     make
 
